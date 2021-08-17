@@ -2,8 +2,6 @@ console.log("Etch-a-Sketch is running.");
 
 const root = document.documentElement;
 
-const editGridButton = document.querySelector(".edit-grid");
-
 const gridContainer = document.querySelector(".grid-container");
 
 addCell = () => {
@@ -24,6 +22,19 @@ generateGrid = () => {
     addCell();
   }
 };
+
+editGrid = () => {
+  newSize = prompt("Enter an integer from 2-100 :");
+  if (Number.isInteger(parseInt(newSize)) && newSize >= 2 && newSize <= 100) {
+    root.style.setProperty("--grid-size", newSize);
+    generateGrid();
+  } else {
+    alert("Invalid input, please try again.");
+  }
+};
+
+const editGridButton = document.querySelector(".edit-grid");
+editGridButton.addEventListener("click", editGrid);
 
 const clearGridButton = document.querySelector(".clear-grid");
 clearGridButton.addEventListener("click", generateGrid);

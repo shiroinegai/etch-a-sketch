@@ -1,7 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Roboto&display=swap");
+
 *,
 ::before,
 ::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+:root {
+  font-size: clamp(16px, 2.5vw, 24px);
+  --red: #ff7842;
+  --green: #baff9a;
+  --black: #191a19;
+  --yellow: #fff6c6;
+  --orange: #ffbb73;
+}
+
+body {
+  background: var(--black);
+}
+
+h1 {
+  background: linear-gradient(var(--red), var(--green));
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-size: 100%;
+  color: transparent;
+  font-family: "Major Mono Display", monospace;
+  font-size: 3rem;
+  line-height: 1;
+  margin: 0.75em 0;
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.actions button {
+  background: none;
+  border: 0.1rem solid var(--yellow);
+  color: var(--yellow);
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  padding: 0.25em 0.5em;
+  text-transform: uppercase;
+}
+
+.grid-container {
+  border: 0.1rem solid var(--orange);
+  margin: 2em auto;
+  height: 90vw;
+  width: 90vw;
+}
+
+@media only screen and (min-width: 800px) {
+  body {
+    display: grid;
+    gap: 2em;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "title grid"
+      "actions grid";
+    justify-items: center;
+    align-items: center;
+    padding: 2em;
+    max-width: 90vw;
+    margin: 0 auto;
+  }
+
+  h1 {
+    margin: 0;
+  }
+
+  .actions {
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+  }
+
+  .grid-container {
+    grid-area: grid;
+    height: 45vw;
+    width: 45vw;
+    margin: 0;
+  }
 }
